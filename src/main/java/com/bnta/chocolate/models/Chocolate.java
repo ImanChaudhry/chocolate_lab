@@ -2,11 +2,24 @@ package com.bnta.chocolate.models;
 
 import javax.persistence.*;
 
-
+@Entity
+@Table
 public class Chocolate {
+
+    @Id
+    @GeneratedValue
+    @Column
     private Long id;
+
+    @Column
     private String name;
+
+// unsure if a private int is also @Column?
+    @Column
     private int cocoaPercentage;
+
+    @ManyToOne
+    @JoinColumn(name = "estate_id", nullable = false)
     private Estate estate;
 
     public Chocolate(String name, int cocoaPercentage, Estate estate) {
